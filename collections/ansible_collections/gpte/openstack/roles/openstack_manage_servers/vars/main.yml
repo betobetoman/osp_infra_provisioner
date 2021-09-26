@@ -1,22 +1,22 @@
 ---
 openstack_instances: 
   - instance_name: app1
-    group: apps
+    group: app_servers
     deployment: dev
-    security_group_name: apps
+    security_group_name: app_servers
 
   - instance_name: app2
-    group: apps
+    group: app_servers
     deployment: dev
-    security_group_name: apps
+    security_group_name: app_servers
 
-  - instance_name: db
-    group: appdbs
+  - instance_name: appdb1
+    group: database_servers
     deployment: dev
-    security_group_name: db
+    security_group_name: database_servers
 
-  - instance_name: frontend
-    group: frontends
+  - instance_name: frontend1
+    group: load_balancers
     deployment: dev
-    security_group_name: frontend
+    security_group_name: load_balancers
 ...
