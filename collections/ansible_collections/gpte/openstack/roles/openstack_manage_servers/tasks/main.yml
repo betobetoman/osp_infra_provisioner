@@ -13,6 +13,10 @@
     meta: "AnsibleGroup={{ __openstack_server.AnsibleGroup }},deployment_name={{ __openstack_server.deployment }}"
     nics:
       - net-name: "{{ __openstack_server.network }}"
+    userdata: |
+      {%- raw -%}#!/bin/bash
+      echo "nameserver $(ip addr show  | grep -i inet | grep -i 192.168 | awk '{print $2}' | awk -F/ '{print $1}')" > /etc/resolv.conf
+      {% endraw %}
   loop: "{{ openstack_servers }}"
   loop_control:
     loop_var: __openstack_server
